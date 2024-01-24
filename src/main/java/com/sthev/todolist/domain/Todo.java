@@ -1,6 +1,8 @@
 package com.sthev.todolist.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Todo")
@@ -9,10 +11,18 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "field cannot be null or empty")
     private String name;
+
+    @NotBlank(message = "field cannot be null or empty")
     private String description;
+
+    @NotNull(message = "field cannot be null")
     private Boolean done;
-    private int priority;
+
+    @NotNull(message = "field cannot be null")
+    private Integer priority;
 
     public Todo() {
     }

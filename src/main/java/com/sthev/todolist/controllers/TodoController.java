@@ -21,16 +21,19 @@ public class TodoController {
     public ResponseEntity<List<Todo>> findAll(){
         return ResponseEntity.ok(service.findAll());
     }
+
     @PostMapping
     public ResponseEntity<List<Todo>> save(@RequestBody @Valid Todo todo){
         service.save(todo);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
     @PutMapping
     public ResponseEntity<Void> replace(@RequestBody @Valid Todo todo){
         service.replace(todo);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         service.delete(id);
