@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class RequestsExceptionHandler {
 
-    @ExceptionHandler(BadRequestException.class)
-    private ResponseEntity<Object> handleBadRequest(BadRequestException exception) {
-        ExceptionDTO response =
-                new ExceptionDTO("Data not found with provided ID", 400);
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ExceptionDTO> threat404() {
+        ExceptionDTO response = new ExceptionDTO("Data not found with provided ID", 404);
         return ResponseEntity.badRequest().body(response);
     }
-
 }
