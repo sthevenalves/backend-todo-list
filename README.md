@@ -18,7 +18,7 @@
 <h2 id="tecnologia">Tecnologias</h2>
 <p>Spring Boot | Spring MVC | Spring Data JPA | Mysql</p>
 
-<h2>Práticas adotadas</h2>
+<h2 id="praticas">Práticas adotadas</h2>
 <ul>
 <li>SOLID, DRY, YAGNI, KISS
 <li>API REST
@@ -27,7 +27,7 @@
 <li>Tratamento de respostas de erro
 </ul>
 
-<h2>Instalação</h2>
+<h2 id="instalacao">Instalação</h2>
 <ol>
   <li>Clone repository</li>
   
@@ -42,7 +42,7 @@
     java -jar target/todolist-0.0.1-SNAPSHOT.jar
 </ol>
 
-<h2>API Endpoints</h2>
+<h2 id="endpoints">API Endpoints</h2>
 <p>Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta <a href="https://www.postman.com/">Postman</a></p>
 
    GET / todos - Listar Tarefas
