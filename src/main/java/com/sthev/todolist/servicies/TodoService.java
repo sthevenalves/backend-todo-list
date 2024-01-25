@@ -2,12 +2,11 @@ package com.sthev.todolist.servicies;
 
 import com.sthev.todolist.domain.Todo;
 import com.sthev.todolist.repositories.TodoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -38,23 +37,18 @@ public class TodoService {
             savedTodo.setDone(todo.getDone());
             savedTodo.setPriority(todo.getPriority());
             repository.save(savedTodo);
-
         }else{
-            throw new NoSuchElementException("User Not Found: " + todo.getId());
+            throw new EntityNotFoundException();
         }
     }
 
 
     public void delete(Long id){
-
         Optional<Todo> existingTodo = repository.findById(id);
-
         if(existingTodo.isPresent()){
-
             repository.deleteById(id);
-
         }else{
-            throw new NoSuchElementException("User Not Found: " + id);
+            throw new EntityNotFoundException();
         }
 
     }
