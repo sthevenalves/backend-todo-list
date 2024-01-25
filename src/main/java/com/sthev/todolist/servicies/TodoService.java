@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -21,7 +22,7 @@ public class TodoService {
     }
 
     public void save(Todo todo){
-       repository.save(todo);
+        repository.save(todo);
     }
 
 
@@ -30,17 +31,31 @@ public class TodoService {
         Optional<Todo> existingTodo = repository.findById(todo.getId());
 
         if (existingTodo.isPresent()) {
+
             Todo savedTodo = existingTodo.get();
             savedTodo.setName(todo.getName());
             savedTodo.setDescription(todo.getDescription());
             savedTodo.setDone(todo.getDone());
             savedTodo.setPriority(todo.getPriority());
             repository.save(savedTodo);
+
+        }else{
+            throw new NoSuchElementException("User Not Found: " + todo.getId());
         }
     }
 
 
     public void delete(Long id){
-       repository.deleteById(id);
+
+        Optional<Todo> existingTodo = repository.findById(id);
+
+        if(existingTodo.isPresent()){
+
+            repository.deleteById(id);
+
+        }else{
+            throw new NoSuchElementException("User Not Found: " + id);
+        }
+
     }
 }
