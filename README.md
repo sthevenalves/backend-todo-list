@@ -22,6 +22,7 @@
 <ul>
 <li>SOLID, DRY, YAGNI, KISS
 <li>API REST
+ <li>Migrations</li>
 <li>Consultas com Spring Data JPA
 <li>Injeção de Dependências
 <li>Tratamento de respostas de erro
