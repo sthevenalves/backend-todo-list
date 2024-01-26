@@ -69,7 +69,7 @@
       }
     ]
 
-   http PUT :8080/todos/2 - Atualizar Tarefa
+   http PUT :8080/todos - Atualizar Tarefa
 
      [
           {
